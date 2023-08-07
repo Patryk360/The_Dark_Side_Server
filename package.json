@@ -1,0 +1,12 @@
+{
+  "name": "GameServer",
+  "version": "0.0.2",
+  "description": "GameServer",
+  "main": "server.js",
+  "repository": "https://github.com/Patryk360/GameServer.git",
+  "author": "Patryk360 <nexigamingyt@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.13.0"
+  }
+}
