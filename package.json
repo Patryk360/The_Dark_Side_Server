@@ -1,12 +1,16 @@
 {
-  "name": "GameServer",
-  "version": "0.0.2",
+  "name": "game-server",
+  "version": "0.0.3",
   "description": "GameServer",
   "main": "server.js",
   "repository": "https://github.com/Patryk360/GameServer.git",
   "author": "Patryk360 <nexigamingyt@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "better-sqlite3": "^9.1.1",
+    "chalk": "4.1.2",
+    "express": "^4.18.2",
+    "quick.db": "^9.1.7",
     "ws": "^8.13.0"
   }
 }

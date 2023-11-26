@@ -1,24 +1,8 @@
-const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8080 });
-wss.on("connection", async (ws) => {
-    const data = {
-        type: "joinMessage",
-        text: "Hello from server",
-    }
-    ws.send(JSON.stringify(data));
-    console.log("New client connected");
-    
-    for (const client of wss.clients) {
-        client.send("ok");
-    }
+const { QuickDB } = require("quick.db");
+const mainDB = new QuickDB({ filePath: "database/main.sqlite" });
+const playersDB = new QuickDB({ filePath: "database/players.sqlite" });
 
-    ws.on("message", async (message) => {
-        for (const client of wss.clients) {
-            client.send(`${message}`);
-        }
-        console.log("received: \n %s", message);
-    });
-});
-wss.on("listening", () => {
-    console.log("Server started...");
-});
+require("./functions/main.js").run(mainDB);
+require("./functions/ws.js")(mainDB);
+require("./functions/webPage.js")(mainDB);
+require("./functions/main.js").console();
