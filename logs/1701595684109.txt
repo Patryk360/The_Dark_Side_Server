@@ -1,0 +1,3 @@
+Serwer HTTP i WebSocket uruchomiony na porcie 8080
+Connected successfully to server!
+Server started! 2979ffe9-65b6-4120-bc1c-66bc88c365af
