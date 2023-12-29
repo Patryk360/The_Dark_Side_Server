@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
     sqlite: {
         enable: false,
@@ -6,7 +7,7 @@ module.exports = {
     },
     mongodb: {
         enable: true,
-        url: "mongodb+srv://NeXiPL:fgaCSL3WZoTEb9y6@thedarkdb.qeywzve.mongodb.net/?retryWrites=true&w=majority",
+        url: `mongodb+srv://NeXiPL:${process.env.PASSWORD}@thedarkdb.qeywzve.mongodb.net/?retryWrites=true&w=majority`,
         main: "main",
         playerData: "playerData"
     }
