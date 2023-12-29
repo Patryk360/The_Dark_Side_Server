@@ -9,7 +9,10 @@ module.exports = {
     info: () => {
         console.log(chalk.blue("[SERVER] IN PROGRESS"));
     },
-    stop: async () => {
+    say: (msg) => {
+        console.log(chalk.blue("[SERVER] " + msg));
+    },
+    stop: () => {
         console.log(chalk.blue("[SERVER] SAVED"));
         process.exit();
     }

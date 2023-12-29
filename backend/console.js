@@ -1,11 +1,5 @@
 const readline = require("readline");
 module.exports = {
-    run: (db) =>{
-        const mainInfo = db.get("server");
-        if (!mainInfo) {
-            db.set("server", { info: "ok" });
-        }
-    },
     console: () => {
         const rl = readline.createInterface({
             input: process.stdin,
@@ -22,6 +16,9 @@ module.exports = {
                     break;
                 case "stop":
                     require("./commands.js").stop();
+                    break;
+                case "say":
+                    require("./commands.js").say("Hello!");
                     break;
                 default:
                     console.log("[SERVER]: What do you mean?");
