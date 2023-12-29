@@ -1,6 +1,6 @@
 module.exports = {
     websocket: {
-        port: 8080,
+        port: 3000,
     },
     dashboard: {
         enable: true,
