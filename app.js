@@ -9,12 +9,13 @@ const uuid = require("uuid");
 if (!fs.existsSync(folderLogs)) {
     fs.mkdirSync(folderLogs, { recursive: true });
 }
-
 const start = async () => {
     await setup(app);
     const id =  uuid.v4();
     const test = await app.db.collection("Players").findOne({ _id: id });
     if (!test) await app.db.collection("Players").insertOne({_id: id, stats: 1});
+    app.data.set("lol", 0);
+    console.log(app.data.get("lol"));
 }
 start().catch(e => console.error(e));
 
