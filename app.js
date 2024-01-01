@@ -1,30 +1,22 @@
 const fs = require("fs");
 const util = require("util");
-const folderDB = "./database/sqlite";
+const App = require("./classes/App.js");
+const app = new App();
 const folderLogs = "./logs";
-const { sqlite, mongodb} = require("./configs/databaseConfig.js");
+const { setup } = require("./database/createTable.js");
+const uuid = require("uuid");
 
-if (!fs.existsSync(folderDB) && sqlite.enable) {
-    fs.mkdirSync(folderDB, { recursive: true });
-}
 if (!fs.existsSync(folderLogs)) {
     fs.mkdirSync(folderLogs, { recursive: true });
 }
 
-const server = async () => {
-    require("./backend/console.js").console();
-    require("./backend/mainManager.js");
-    if (sqlite.enable && !mongodb.enable) {
-        await require("./database/sqlite.js").run();
-    }
-    if (mongodb.enable && !sqlite.enable) {
-        await require("./database/mongodb.js").run();
-    }
+const start = async () => {
+    await setup(app);
+    const id =  uuid.v4();
+    const test = await app.db.collection("Players").findOne({ _id: id });
+    if (!test) await app.db.collection("Players").insertOne({_id: id, stats: 1});
 }
-
-const { UUID } = require("bson");
-
-server().then(r => console.log("Server started! " + new UUID().toString()));
+start().catch(e => console.error(e));
 
 const log = fs.createWriteStream(`./logs/${Date.now()}.txt`, { flags: 'a' });
 console.log = (message) => {

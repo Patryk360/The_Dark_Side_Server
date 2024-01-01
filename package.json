@@ -1,19 +1,17 @@
 {
   "name": "game-server",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "GameServer",
   "main": "app.js",
   "repository": "https://github.com/Patryk360/GameServer.git",
   "author": "Patryk360 <nexigamingyt@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "^9.2.2",
-    "bson": "^6.2.0",
     "chalk": "5.3.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongodb": "^6.3.0",
-    "quick.db": "^9.1.7",
+    "uuid": "^9.0.1",
     "ws": "^8.16.0"
   },
   "packageManager": "yarn@4.0.2"

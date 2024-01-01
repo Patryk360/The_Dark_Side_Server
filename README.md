@@ -1,2 +1,2 @@
 # GameServer
-WS server fo Unity "Game"
+WS app fo Unity "Game"
