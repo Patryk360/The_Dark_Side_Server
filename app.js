@@ -1,6 +1,7 @@
 const fs = require("fs");
 const util = require("util");
 const App = require("./classes/App.js");
+const startServer = require("./backend/mainManager.js");
 const app = new App();
 const folderLogs = "./logs";
 const { setup } = require("./database/createTable.js");
@@ -16,6 +17,8 @@ const start = async () => {
     if (!test) await app.db.collection("Players").insertOne({_id: id, stats: 1});
     app.data.set("lol", 0);
     console.log(app.data.get("lol"));
+
+    startServer();
 }
 start().catch(e => console.error(e));
 
