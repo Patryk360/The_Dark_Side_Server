@@ -1,6 +1,6 @@
 const readline = require("node:readline");
 module.exports = {
-    readConsole: () => {
+    readConsole: (gameServer) => {
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout,

@@ -8,7 +8,7 @@ const app = express();
 const server = createServer(app);
 const wss = new Server({ server });
 
-module.exports = () => {
+module.exports = (gameServer) => {
     app.get('/', (req, res) => {
         res.send('Server HTTP works!');
     });
@@ -18,13 +18,13 @@ module.exports = () => {
     
         ws.on('message', (message) => {
             try {
-                responseFilter(JSON.parse(message.toString()), wss, ws);
+                responseFilter(JSON.parse(message.toString()), wss, ws, gameServer);
             } catch (e) {
                 console.error(e);
             }
         });
     
-        ws.send('Hi, WebSocket client!');
+        ws.send(JSON.stringify({ content: "Hi, WebSocket client!" }));
     });
     
     server.listen(websocket.port, () => {

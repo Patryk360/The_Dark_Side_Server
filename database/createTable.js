@@ -1,15 +1,17 @@
 "use strict";
 const connect = require("./connect.js");
-module.exports.setup = async (app) => {
-    await connect(app);
-    const collections = await app.db.listCollections().toArray();
+module.exports.setup = async (gameServer) => {
+    await connect(gameServer);
+    const collections = await gameServer.db.listCollections().toArray();
+    
     const tableArray = [
         { name: "Players", indexes: [] },
     ]
+
     for (const table of tableArray) {
-        const coll = await app.db.collection(table.name);
+        const coll = await gameServer.db.collection(table.name);
         if (!collections.find(a => a.name === table.name)) {
-            await app.db.createCollection(table.name);
+            await gameServer.db.createCollection(table.name);
             console.log(`Table ${table.name} is created!`);
             const indexes = await  coll.listIndexes().toArray();
             for (const index of table.indexes) {
