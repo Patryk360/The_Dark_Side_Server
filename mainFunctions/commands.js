@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+"use strict";
 module.exports = {
     help: () => {
         let help = "help - if you search to help\n";
@@ -7,13 +7,13 @@ module.exports = {
         console.log(help);
     },
     info: () => {
-        console.log(chalk.blue("[SERVER] IN PROGRESS"));
+        console.log("[SERVER] IN PROGRESS");
     },
     say: (msg) => {
-        console.log(chalk.blue("[SERVER] " + msg));
+        console.log("[SERVER] " + msg);
     },
     stop: () => {
-        console.log(chalk.blue("[SERVER] SAVED"));
+        console.log("[SERVER] SAVED");
         process.exit();
     }
 }
