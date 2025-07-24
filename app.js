@@ -1,10 +1,9 @@
 const fs = require("fs");
 const util = require("util");
 const GameServer = require("./classes/GameServer.js");
-const startServer = require("./mainFunctions/mainManager.js");
 const gameServer = new GameServer();
 const { setup } = require("./database/createTable.js");
-const { readConsole } = require("./mainFunctions/readConsole.js");
+const { startServer } = require("./mainFunctions/startServer.js");
 
 if (!fs.existsSync("./logs")) {
     fs.mkdirSync("./logs", { recursive: true });
@@ -12,7 +11,6 @@ if (!fs.existsSync("./logs")) {
 const start = async () => {
     await setup(gameServer);
     startServer(gameServer);
-    readConsole(gameServer);
 }
 start().catch(e => console.error(e));
 
